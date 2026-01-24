@@ -18,6 +18,7 @@ const App = () => {
       <section id='Homepage'>
         <Navbar />
         <Hero />
+        
       </section>
 
       <section id='Services'>
