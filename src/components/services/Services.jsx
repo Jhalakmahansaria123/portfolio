@@ -1,81 +1,115 @@
 import { useRef } from "react";
-import "./services.scss"
-import {motion, useInView} from 'framer-motion'
+import "./services.scss";
+import { motion, useInView } from "framer-motion";
 
-const variants={
-  initial:{
-    x:-500,
-    y:100,
-    opacity:0,
+const variants = {
+  initial: {
+    x: -500,
+    y: 100,
+    opacity: 0,
   },
-  animate:{
-    x:0,
-    opacity:1,
-    y:0,
-    transition:{
-      duration:1,
+  animate: {
+    x: 0,
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
       staggerChildren: 0.1,
     },
   },
 };
 
 const Services = () => {
-
-  const ref= useRef()
-  const isInView=useInView(ref, {margin: "-100px"})
+  const ref = useRef();
+  const isInView = useInView(ref, { margin: "-100px" });
 
   return (
-    <motion.div 
-    className="services" 
-    variants={variants}
-    initial={window.innerWidth<=738 ? {x:-300, y:100, opacity:0} : "initial"}
-    ref={ref} animate={ isInView && "animate"}>
-     
+    <motion.div
+      className="services"
+      variants={variants}
+      initial={
+        window.innerWidth <= 738
+          ? { x: -300, y: 100, opacity: 0 }
+          : "initial"
+      }
+      ref={ref}
+      animate={isInView && "animate"}
+    >
       <motion.div className="textContainer" variants={variants}>
-        <p>I enjoy turning ideas into <br /> functional web experiences</p>
+        <p>
+          I enjoy turning ideas into <br /> functional web experiences
+        </p>
         <hr />
       </motion.div>
 
       <motion.div className="titleContainer" variants={variants}>
         <div className="title">
           <img src="/people.webp" alt="" />
-          <h1>My <motion.b whileHover={{color:"orange"}}>Technical</motion.b></h1>
+          <h1>
+            My{" "}
+            <motion.b whileHover={{ color: "orange" }}>
+              Technical
+            </motion.b>
+          </h1>
         </div>
         <div className="title">
-          <h1>Skills as a <motion.b whileHover={{color:"orange"}}> Developer</motion.b></h1>
+          <h1>
+            Skills as a{" "}
+            <motion.b whileHover={{ color: "orange" }}>
+              Developer
+            </motion.b>
+          </h1>
           <button>WHAT I DO?</button>
         </div>
       </motion.div>
 
+      {/* ICON CAROUSEL INSIDE LIST CONTAINER */}
       <motion.div className="listContainer" variants={variants}>
+        <div className="iconCarousel">
+          <div className="iconTrack">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />          
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original-wordmark.svg" />          
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />     
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" />
+           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" />
 
-        <motion.div className="box" whileHover={{background:"lightgray", color:"black"}}>
-          <h1>Basic Frontend</h1>
-          <p>Built responsive websites using HTML, CSS, and JavaScript. Click below to view my projects.</p>
-          
-        </motion.div>
-
-        <motion.div className="box" whileHover={{background: "lightgray", color:"black"}}>
-          <h1>tailwindcss</h1>
-          <p>Using Tailwind CSS makes styling faster and simpler. Click on the button below to view the project where i used it.</p>
-          
-        </motion.div>
-
-        <motion.div className="box" whileHover={{background:"lightgray", color:"black"}}>
-          <h1>DSA(Java)</h1>
-          <p>Practicing DSA in Java. Solved 150+ problems on LeetCode and other platforms to improve logic and problem-solving skills. Continuing to strengthen fundamentals every day.</p>
-        </motion.div>
-
-        <motion.div className="box" whileHover={{background:"lightgray", color:"black"}}>
-          <h1>React</h1>
-          <p>Know the basics of React and built projects using components, props, and state. Click  on the button below to view a projectwhere i used it</p>
-          
-        </motion.div>
-
-
-      </motion.div>    
+            {/* duplicated for smooth infinite scroll */}
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />          
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original-wordmark.svg" />          
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />     
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" />
+           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" />
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;
