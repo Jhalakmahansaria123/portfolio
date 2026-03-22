@@ -3,13 +3,13 @@ import { useRef } from "react";
 import {motion, useScroll, useSpring, useTransform} from 'framer-motion'
 
 const items=[
-    {
+     {
         id:1,
-        title:"Weatherly",
-        img:"/weatherProject.jpg",
-        desc:"A simple web application that allows users to search for cities and get real-time weather data, displaying key metrics such as temperature, humidity, and wind speed through a clean interface.",
-        techStack:"HTML, CSS, JavaScript, Weather API",
-        demoLink:"https://heyweatherr123.netlify.app",
+        title:"Bon appétit",
+        img:"/food-delvery.jpg",
+        desc:"Bon appétit is a food ordering app that makes it easy to explore menus, order your favorite meals, and get them delivered with a smooth and convenient experience. It also supports secure payments, user login, and real-time order tracking.",
+        techStack:" React, Shadcn UI, Node.js, MongoDB, Auth0, Stripe,Cloudinary, Render",
+        demoLink:"https://mern-food-ordering-app-frontend-cwu8.onrender.com/",
     },
     {
         id:2,
@@ -19,6 +19,15 @@ const items=[
         techStack:"React, Tailwind CSS, JavaScript, RapidAPI (Google Translator API), OCR (Tesseract.js)",
         demoLink:"https://mytranslator123.netlify.app/",
     },
+    {
+        id:3,
+        title:"Weatherly",
+        img:"/weatherProject.jpg",
+        desc:"A simple web application that allows users to search for cities and get real-time weather data, displaying key metrics such as temperature, humidity, and wind speed through a clean interface.",
+        techStack:"HTML, CSS, JavaScript, Weather API",
+        demoLink:"https://heyweatherr123.netlify.app",
+    },
+
 ];
 
 const Single =({item}) =>{
