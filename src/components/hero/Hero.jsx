@@ -1,5 +1,6 @@
 import "./hero.scss"
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const textVariants={
   initial:{
@@ -12,6 +13,7 @@ const textVariants={
     opacity:0, y:10, transition:{ duration:2, repeat:Infinity}
   }
 };
+
 const sliderVariants={
   initial:{ x:0,
   },
@@ -24,8 +26,35 @@ const sliderVariants={
   },
   },
 };
+
 const Hero = () => {
-  
+  const roles = ["Frontend Developer", "Full Stack Developer", "Software Developer"];
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[index];
+    let typingSpeed = isDeleting ? 50 : 100;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setText(current.substring(0, text.length + 1));
+        if (text === current) {
+          setTimeout(() => setIsDeleting(true), 1000);
+        }
+      } else {
+        setText(current.substring(0, text.length - 1));
+        if (text === "") {
+          setIsDeleting(false);
+          setIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, index]);
+
   return (
     <div className="hero">
 
@@ -33,32 +62,49 @@ const Hero = () => {
         <motion.div
          className="textContainer" 
         variants={textVariants} 
-        initial="initial"animate="animate">
+        initial="initial" animate="animate">
 
             <motion.h2 variants={textVariants}>JHALAK MAHANSARIA</motion.h2>
-            <motion.h1 variants={textVariants}>Hi I'm a <br /><span >Frontend developer</span></motion.h1>
+
+            <motion.h1 variants={textVariants}>
+              Hi I'm a <br />
+              <span>{text}</span> {/* ✅ ONLY CHANGE HERE */}
+            </motion.h1>
             
             <motion.div variants={textVariants} className="buttons">
-                <motion.button onClick={() => { window.location.hash = "Portfolio";}}
-                 variants={textVariants}> See my Latest Works</motion.button>
+                <motion.button 
+                onClick={() => { window.location.hash = "Portfolio";}}
+                 variants={textVariants}>
+                 See my Latest Works
+                </motion.button>
 
-                <motion.button onClick={() => { window.location.hash = "Contact";}}
-                variants={textVariants}>Contact Me</motion.button>
+                <motion.button 
+                onClick={() => { window.location.hash = "Contact";}}
+                variants={textVariants}>
+                Contact Me
+                </motion.button>
             </motion.div>
 
-            <motion.img variants={textVariants} animate="scrollButton" src="/scroll.png"id="scroll" alt="" />
+            <motion.img 
+            variants={textVariants} 
+            animate="scrollButton" 
+            src="/scroll.png"
+            id="scroll" 
+            alt="" />
         </motion.div>
-        </div>
+      </div>
 
-        <motion.div 
+      <motion.div 
         className="slidingTextContainer" 
         variants={sliderVariants} 
-        initial="initial" animate="animate">Software Developer web Developer Student
-        </motion.div>
+        initial="initial" 
+        animate="animate">
+        Software Developer web Developer Student
+      </motion.div>
 
-        <div className="imageContainer">
-          <img src="hero4.png" alt="" />  
-        </div>
+      <div className="imageContainer">
+        <img src="hero4.png" alt="" />  
+      </div>
 
     </div>
   )
